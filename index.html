@@ -1,0 +1,74 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="SurgiCracks"><meta name="theme-color" content="#14324a"><meta http-equiv="refresh" content="300"><link rel="apple-touch-icon" href="icono.png"></head><body><title>Tablero SurgiCracks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Tablero de guardia: resumen arriba, después lo que necesita al Dr, lo que está en marcha y lo hecho hoy; una columna en el móvil. */
+:root{
+  --bg:#f4f6f8; --panel:#ffffff; --ink:#132433; --muted:#5b6b78; --line:#dde3e8;
+  --brand:#14324a; --accent:#b8342b; --ok:#2f7d4f; --warn:#a86a00; --gpt:#3e5c9a;
+  --display:"Fraunces", Georgia, serif; --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif; --mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d1821; --panel:#13222e; --ink:#e6edf2; --muted:#9aaab6; --line:#243645;
+  --brand:#8fb8d8; --accent:#ef7a6f; --ok:#6cc391; --warn:#e3b04f; --gpt:#9db4ea; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0d1821; --panel:#13222e; --ink:#e6edf2; --muted:#9aaab6; --line:#243645;
+  --brand:#8fb8d8; --accent:#ef7a6f; --ok:#6cc391; --warn:#e3b04f; --gpt:#9db4ea; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45}
+.wrap{max-width:980px;margin:0 auto;padding-inline:16px;padding-block:20px 40px;display:grid;gap:18px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,4vw,2rem);margin:0;color:var(--brand);text-wrap:balance}
+.act{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.resumen{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.cifra{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:2px}
+.cifra b{font-family:var(--display);font-size:1.7rem;font-variant-numeric:tabular-nums;line-height:1}
+.cifra span{font-size:.82rem;color:var(--muted)}
+.cifra.dr b{color:var(--accent)} .cifra.gpt b{color:var(--gpt)} .cifra.cola b{color:var(--brand)} .cifra.ses b{color:var(--warn)}
+section{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+section.dr{border-color:var(--accent)}
+h2{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;color:var(--muted)}
+section.dr h2{color:var(--accent)}
+ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.fila{border-top:1px solid var(--line);padding-top:10px;min-width:0}
+.fila:first-child{border-top:0;padding-top:0}
+.cab{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px}
+.cuando{margin-left:auto;font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.pide{margin:4px 0 0;overflow-wrap:anywhere}
+.nota{margin:4px 0 0;font-size:.86rem;color:var(--muted);overflow-wrap:anywhere}
+.chip{display:inline-block;font-family:var(--mono);font-size:.72rem;padding:1px 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.chip.gpt{color:var(--gpt);border-color:var(--gpt)}
+.vacio{color:var(--muted);font-style:italic}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:760px){.dos{grid-template-columns:1fr}}
+.sesl{display:flex;flex-wrap:wrap;gap:8px}
+.ses{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:.86rem}
+.ses .punto{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.ses.mal{border-color:var(--accent)} .ses.mal .punto{background:var(--accent)}
+.ses .e{color:var(--muted);font-size:.78rem}
+.env{display:grid;grid-template-columns:auto auto minmax(0,10rem) minmax(0,1fr);gap:4px 8px;align-items:baseline;border-top:1px solid var(--line);padding-top:6px}
+.env:first-child{border-top:0;padding-top:0}
+.env .h{font-family:var(--mono);font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.env .q{font-weight:700;overflow-wrap:anywhere}
+.env .tm{color:var(--muted);overflow-wrap:anywhere}
+@media (max-width:520px){.env{grid-template-columns:auto auto 1fr}.env .tm{grid-column:1/-1}}
+footer{font-size:.8rem;color:var(--muted)}
+</style>
+<div class="wrap">
+<header><h1>Tablero SurgiCracks</h1><span class="act">Actualizado 15:59 (Ecuador) · 20:59Z · 2026-10-04</span></header>
+<div class="resumen">
+ <div class="cifra dr"><b>0</b><span>esperan una decisión suya</span></div>
+ <div class="cifra cola"><b>0</b><span>solicitudes en curso</span></div>
+ <div class="cifra gpt"><b>0</b><span>pedidas a ChatGPT</span></div>
+ <div class="cifra ses"><b>0</b><span>sesiones caídas</span></div>
+</div>
+<section class="dr"><h2>Necesitan una respuesta suya</h2><ul><li class="vacio">Nada espera una decisión suya.</li></ul></section>
+<div class="dos">
+<section><h2>En curso ahora</h2><ul><li class="vacio">La cola está vacía.</li></ul></section>
+<section><h2>Sesiones</h2><ul class="sesl"><li class="ses ok"><span class="punto"></span><span class="n">ClinicalKey</span><span class="e">viva</span></li><li class="ses ok"><span class="punto"></span><span class="n">Research4Life</span><span class="e">viva</span></li><li class="ses ok"><span class="punto"></span><span class="n">UNAB</span><span class="e">viva</span></li><li class="ses ok"><span class="punto"></span><span class="n">Springer</span><span class="e">viva</span></li><li class="ses ok"><span class="punto"></span><span class="n">WhatsApp</span><span class="e">viva</span></li><li class="ses ok"><span class="punto"></span><span class="n">Drive</span><span class="e">viva</span></li><li class="ses ok"><span class="punto"></span><span class="n">JoMI</span><span class="e">viva</span></li><li class="ses ok"><span class="punto"></span><span class="n">WebSurg</span><span class="e">viva</span></li></ul></section>
+</div>
+<section><h2>Pedido a ChatGPT (lo que no tenemos)</h2><ul><li class="vacio">Nada pendiente de ChatGPT.</li></ul></section>
+
+<section><h2>Enviado desde las 12:54 (2)</h2><ul><li class="env"><span class="h">13:25</span><span class="chip g">G2</span><span class="q">Williams H.</span><span class="tm">cancer de tiroides</span></li><li class="env"><span class="h">13:06</span><span class="chip g">G1</span><span class="q">Geovanny B.</span><span class="tm">colecistectomia y coledocolitiasis en bypass</span></li></ul></section>
+<footer>Se actualiza en cada parte horario. Las horas de la lista de envíos son de Ecuador.</footer>
+</div></body></html>
